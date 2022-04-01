@@ -36,22 +36,16 @@ export const TodoList = () => {
 			.catch((err) => console.log(err));
 	}
 
-	function editTask(id) {
-		let newArray = list.map((task, i) => {
-			if (i == id) {
-				task.done = !task.done;
-			}
-			return task;
-		});
-		setList(newArray);
-		console.log(newArray);
+	function editTask(task) {
+		task.done = !task.done;
+		console.log(list);
 		fetch(
 			"https://3000-lucciii33-todobackend-2sswhduf7yz.ws-us38.gitpod.io/todo/" +
-				id,
+				task.id,
 			{
 				method: "PUT",
 				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify(newArray),
+				body: JSON.stringify(task),
 			}
 		)
 			.then((res) => res.json())
@@ -115,7 +109,7 @@ export const TodoList = () => {
 							</span>
 							<span
 								className="icons ms-3"
-								onClick={() => editTask(task.id)}>
+								onClick={() => editTask(task)}>
 								<i className="fas fa-check"></i>
 							</span>
 						</li>
