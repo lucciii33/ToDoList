@@ -24,15 +24,18 @@ h1{
     color: #132743;
     font-size: 2rem;
 }
-.list span{
+.icons{
     display: none;
     
     
 }
-li:hover span{
+li:hover .icons{
     display: inline;
     cursor: pointer;
     color: #132743;
+}
+.line-through{
+    text-decoration: line-through;
 }
 
 
